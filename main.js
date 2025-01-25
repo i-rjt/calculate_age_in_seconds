@@ -1,28 +1,30 @@
-(function fetchAge(){
-    let ageDate = document.getElementById("ageDate").value;
-    displayAge(ageDate);
-
-})();
-
-
-function displayAge(date){
-    document.getElementById("myForm").addEventListener("submit", (e) => {
-        e.preventDefault();
-         document.getElementById("button").addEventListener("click", () => {
-            let sec = new Date(date);
-            if(isNaN(sec)){
-                alert("Please select a valid date");
-            }else{
-            setInterval(() => {
-                let d = new Date();
-                let current = d.valueOf() / 1000;
-                
-                    let result  = current - (sec.valueOf() / 1000) ;
-                    let div = document.querySelector(".seconds");
-                    div.innerHTML = `<h4>Your age in seconds till ${d.toUTCString()} is --> ${Math.round(result)} seconds </h4>`;    
-            }, 100 );
-        }
-       });
-    })
+function fetchAge(){
+   
+    document.getElementById("myForm").addEventListener("submit",(form) => {
+        form.preventDefault();
+        let ageDate = document.getElementById("ageDate").value;
+        displayAge(ageDate);
+});
 }
 
+fetchAge();
+
+function displayAge(age){
+    const ageDate = new Date(age);
+    let div = document.querySelector(".seconds");
+    let button  = document.getElementById("button");
+    if(!age){
+        alert("Please enter a valid date");
+    }else{
+        button.addEventListener("click",() => {
+            setInterval(()=> {
+        let currentDate = new Date();
+        let age_in_seconds = ageDate.valueOf() / 1000;
+        let date_in_seconds = currentDate.valueOf() / 1000;
+        let result = Math.round(date_in_seconds - age_in_seconds);
+                div.innerHTML = `<h4>Your age till ${currentDate.toUTCString()} :- ${result}<em><sup>secs</sup></em></h4>`;
+            },1000);
+     });
+    }
+    
+}

@@ -18,29 +18,29 @@ input {
     width: 10rem;
 }
 
-.para{
+#myForm{
+    align-self: center;
+    margin: 0 auto;
+    padding: 0 auto;
+}
+
+.copyright{
     position: relative;
     animation: move 20s linear infinite;
     margin: 2px;
     text-align: center;
 }
 
-.para:hover{
+.copyright:hover{
    animation: pause;
 }
 
 button[id="button"]{
     color: red;
+    border-radius: 8px;
+    border: 1px solid yellow;
 }
 
-@keyframes pause{
-    0%{
-        left: 100%;
-    }
-    100%{
-        left: -0%;
-    }
-}
 
 @keyframes move{
     0%{
@@ -50,3 +50,4 @@ button[id="button"]{
         left: -100%;
     }
 }
+
